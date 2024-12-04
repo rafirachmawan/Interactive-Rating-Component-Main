@@ -9,15 +9,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
   </head>
   <body class="bg-gray-900 flex items-center justify-center min-h-screen">
     <div class="bg-gray-800 text-white rounded-xl p-6 w-80">
@@ -76,6 +67,7 @@
     <script>
       let selectedRating = null;
 
+      // Fungsi untuk memilih rating
       function selectRating(rating) {
         selectedRating = rating;
         document.querySelectorAll("button").forEach((btn) => {
@@ -88,11 +80,13 @@
         selectedBtn.classList.add("bg-orange-500", "text-white");
       }
 
+      // Fungsi untuk submit feedback
       function submitFeedback() {
-        const feedback = document.getElementById("feedback");
         if (selectedRating) {
-          feedback.textContent = `You selected ${selectedRating} out of 5. Thank you for your feedback!`;
+          // Redirect ke Respon.html dengan query parameter
+          window.location.href = `Respon.html?rating=${selectedRating}`;
         } else {
+          const feedback = document.getElementById("feedback");
           feedback.textContent = "Please select a rating before submitting!";
         }
       }
