@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!--  -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feedback Form</title>
+    <title>Interactive Rating Component</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-
-    <title>Frontend Mentor | Interactive rating component</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
       .attribution {
         font-size: 11px;
@@ -37,25 +32,70 @@
         appreciated to help us improve our offering!
       </p>
       <div class="flex justify-between mb-6">
-        <button class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full">
+        <button
+          class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full hover:bg-orange-500 hover:text-white"
+          onclick="selectRating(1)"
+        >
           1
         </button>
-        <button class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full">
+        <button
+          class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full hover:bg-orange-500 hover:text-white"
+          onclick="selectRating(2)"
+        >
           2
         </button>
-        <button class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full">
+        <button
+          class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full hover:bg-orange-500 hover:text-white"
+          onclick="selectRating(3)"
+        >
           3
         </button>
-        <button class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full">
+        <button
+          class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full hover:bg-orange-500 hover:text-white"
+          onclick="selectRating(4)"
+        >
           4
         </button>
-        <button class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full">
+        <button
+          class="bg-gray-700 text-gray-400 w-10 h-10 rounded-full hover:bg-orange-500 hover:text-white"
+          onclick="selectRating(5)"
+        >
           5
         </button>
       </div>
-      <button class="bg-orange-500 text-white w-full py-2 rounded-full">
+      <button
+        id="submitButton"
+        class="bg-orange-500 text-white w-full py-2 rounded-full hover:bg-orange-600"
+        onclick="submitFeedback()"
+      >
         SUBMIT
       </button>
+      <p id="feedback" class="text-gray-400 mt-4 text-center"></p>
     </div>
+
+    <script>
+      let selectedRating = null;
+
+      function selectRating(rating) {
+        selectedRating = rating;
+        document.querySelectorAll("button").forEach((btn) => {
+          btn.classList.remove("bg-orange-500", "text-white");
+          btn.classList.add("bg-gray-700", "text-gray-400");
+        });
+        const selectedBtn = document.querySelector(
+          `button:nth-child(${rating})`
+        );
+        selectedBtn.classList.add("bg-orange-500", "text-white");
+      }
+
+      function submitFeedback() {
+        const feedback = document.getElementById("feedback");
+        if (selectedRating) {
+          feedback.textContent = `You selected ${selectedRating} out of 5. Thank you for your feedback!`;
+        } else {
+          feedback.textContent = "Please select a rating before submitting!";
+        }
+      }
+    </script>
   </body>
 </html>
