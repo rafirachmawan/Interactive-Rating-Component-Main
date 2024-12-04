@@ -9,9 +9,29 @@
   <body
     class="bg-gray-900 flex items-center justify-center min-h-screen text-white"
   >
-    <div class="text-center">
-      <h1 class="text-3xl font-bold mb-4">Thank You!</h1>
-      <p id="message" class="text-lg text-gray-400"></p>
+    <div class="bg-gray-800 rounded-xl p-8 w-96 text-center shadow-lg">
+      <!-- Gambar ilustrasi -->
+      <img
+        src="./images/illustration-thank-you.svg"
+        alt="Thank You Icon"
+        class="w-20 mx-auto mb-6"
+      />
+
+      <!-- Pesan rating -->
+      <div
+        class="bg-gray-700 text-orange-500 rounded-full px-4 py-2 inline-block text-sm mb-6"
+      >
+        <span id="message">You selected 4 out of 5.</span>
+      </div>
+
+      <!-- Judul utama -->
+      <h1 class="text-2xl font-bold mb-4">Thank you!</h1>
+
+      <!-- Pesan deskripsi -->
+      <p class="text-gray-400 text-sm">
+        We appreciate you taking the time to give a rating. If you ever need
+        more support, don’t hesitate to get in touch!
+      </p>
     </div>
 
     <script>
